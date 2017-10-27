@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="presenter"
+            type="id.codigo.invoker.MainPresenter" />
+
+        <variable
+            name="model"
+            type="id.codigo.invoker.MainModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="id.codigo.invoker.MainActivity">
+        <EditText
+            android:id="@+id/edit_username"
+            android:hint="email"
+            android:text="@={model.username}"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit_password"
+            android:hint="password"
+            android:text="@={model.password}"
+            android:layout_below="@id/edit_username"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/buttonSignIn"
+            android:layout_margin="10dp"
+            android:onClick="@{()->presenter.doLogin()}"
+            android:layout_below="@id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/text_result"
+            android:layout_below="@id/buttonSignIn"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="30dp"
+            android:text="@={model.display_message}"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+</layout>

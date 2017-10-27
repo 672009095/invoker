@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "id.codigo.invoker"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    productFlavors {
+        sandbox {
+            applicationId "id.codigo.invoker"
+            buildConfigField 'String', 'HOST', '"http://api.klasio.dev.codigo.id/api/"'
+            resValue "string", "app_name", "Invoke-Dev"
+            buildConfigField "String", "BASE_URL", "\"http://api.klasio.dev.codigo.id/api/Cart/charge\""
+            buildConfigField "String", "CLIENT_KEY", "\"VT-client-5Mp0juvz1piVys5i\""
+            buildConfigField "String", "BASE_IMAGE", '"http://web.klasio.dev.codigo.id/uploads/pages_cover/"'
+            buildConfigField "String", "BASE_ICON", '"http://web.klasio.dev.codigo.id/uploads/kelas/topik_icon/"'
+            buildConfigField "String", "BASE_AVATAR", '"http://web.klasio.dev.codigo.id/uploads/user_avatar/"'
+            buildConfigField "String", "BASE_AVATAR_UNFIX", '"http://api.klasio.dev.codigo.id/uploads/user_avatar/"'
+            buildConfigField "String", "BASE_THUMBNAIL",'"http://api.klasio.dev.codigo.id/uploads/lesson/thumbnail_image/"'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile(group: 'id.codigo.seedroid', name: 'seedroid-core', version: '0.0.2', ext: 'aar')
+}
