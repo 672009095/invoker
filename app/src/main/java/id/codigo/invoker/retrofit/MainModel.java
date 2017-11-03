@@ -1,4 +1,4 @@
-package id.codigo.invoker;
+package id.codigo.invoker.retrofit;
 
 import android.databinding.ObservableField;
 import android.databinding.ViewDataBinding;

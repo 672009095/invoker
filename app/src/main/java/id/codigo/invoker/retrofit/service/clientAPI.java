@@ -1,6 +1,6 @@
-package id.codigo.invoker.service;
+package id.codigo.invoker.retrofit.service;
 
-import id.codigo.invoker.MainModel;
+import id.codigo.invoker.retrofit.MainModel;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

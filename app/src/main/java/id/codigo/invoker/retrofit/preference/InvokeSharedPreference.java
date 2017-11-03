@@ -1,9 +1,9 @@
-package id.codigo.invoker.preference;
+package id.codigo.invoker.retrofit.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import id.codigo.invoker.MainModel;
+import id.codigo.invoker.retrofit.MainModel;
 
 /**
  * Created by papahnakal on 26/10/17.
@@ -18,6 +18,7 @@ public class InvokeSharedPreference implements SessionManager {
     private static final String PREF_NAME = "Invoke";
     private static final String KEY_USERID = "userId";
     private static final String KEY_IS_LOGIN = "IsLoggedIn";
+    private static final String KEY_AUTHRIZATION = "auth";
 
     public InvokeSharedPreference(Context context){
         this.mContext = context;
@@ -52,6 +53,17 @@ public class InvokeSharedPreference implements SessionManager {
         mEditor.putBoolean(KEY_IS_LOGIN, true);
         mEditor.putString(KEY_USERID, user.getData().getId_user().toString());
         mEditor.commit();
+    }
+
+    @Override
+    public void setAuthorization(String s) {
+        mEditor.putString(KEY_AUTHRIZATION,s);
+        mEditor.commit();
+    }
+
+    @Override
+    public String getAutorization() {
+        return mPref.getString(KEY_AUTHRIZATION,"");
     }
 
     @Override

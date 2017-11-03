@@ -4,16 +4,16 @@
     <data>
         <variable
             name="presenter"
-            type="id.codigo.invoker.MainPresenter" />
+            type="id.codigo.invoker.retrofit.MainPresenter" />
 
         <variable
             name="model"
-            type="id.codigo.invoker.MainModel" />
+            type="id.codigo.invoker.retrofit.MainModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="id.codigo.invoker.MainActivity">
+        tools:context="id.codigo.invoker.retrofit.MainActivity">
         <EditText
             android:id="@+id/edit_username"
             android:hint="email"
@@ -32,7 +32,7 @@
         <Button
             android:id="@+id/buttonSignIn"
             android:layout_margin="10dp"
-            android:onClick="@{()->presenter.doLogin()}"
+
             android:layout_below="@id/edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

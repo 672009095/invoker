@@ -1,9 +1,12 @@
-package id.codigo.invoker;
+package id.codigo.invoker.retrofit;
 
 import android.util.Log;
 
-import id.codigo.invoker.preference.SessionManager;
-import id.codigo.invoker.service.ServiceFactory;
+import id.codigo.invoker.BuildConfig;
+import id.codigo.invoker.retrofit.preference.InvokeSharedPreference;
+import id.codigo.invoker.retrofit.preference.SessionManager;
+import id.codigo.invoker.retrofit.service.InvokerService;
+import id.codigo.invoker.retrofit.service.clientAPI;
 import id.codigo.seedroid_core.presenter.BasePresenter;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,23 +18,19 @@ import retrofit2.Response;
 
 public class MainPresenter extends BasePresenter<MainView> {
     private static final String TAG = "main presenter";
-    private SessionManager sessionManager;
-    private String password;
-    private String username;
-    public MainPresenter(String password,String username,SessionManager sessionManager){
-        this.password = password;
-        this.username = username;
-        this.sessionManager = sessionManager;
+    private InvokeSharedPreference shared;
+    public MainPresenter(InvokeSharedPreference sessionManager){
+        this.shared = sessionManager;
 
     }
     @Override
     public void onStartUI() {
         getMvpView().setPresenter();
     }
-    public void doLogin(){
-        Log.d(TAG,"param password: "+password);
-        Log.d(TAG,"param username: "+username);
-        Call<MainModel> call = ServiceFactory.createWithAuth(sessionManager).loginUser(username, password);
+    public void doLogin(String username,String password){
+        Log.d(TAG,"param password: "+username);
+        Log.d(TAG,"param username: "+password);
+        Call<MainModel> call = InvokerService.createWithAuth(shared).loginUser(username, password);
         call.enqueue(new Callback<MainModel>() {
             @Override
             public void onResponse(Call<MainModel> call, Response<MainModel> response) {

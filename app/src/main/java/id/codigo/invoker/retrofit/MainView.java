@@ -1,4 +1,4 @@
-package id.codigo.invoker;
+package id.codigo.invoker.retrofit;
 
 import id.codigo.seedroid_core.view.BaseView;
 
